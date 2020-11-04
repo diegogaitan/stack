@@ -11,6 +11,6 @@ defmodule Stack.CoreTest do
   end
 
   test "pop" do
-    assert Core.pop([3, 4, 5]) == 3
+    assert Core.pop([3, 4, 5]) == {3, [4, 5]}
   end
 end
