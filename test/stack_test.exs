@@ -2,12 +2,12 @@ defmodule StackTest do
   use ExUnit.Case
 
   setup do
-    stack = start_supervised!(
-        %{
-           id: Stack,
-           start: {Stack, :start_link, [[]]}
-         }
-    )
+    stack =
+      start_supervised!(%{
+        id: Stack,
+        start: {Stack, :start_link, [[]]}
+      })
+
     %{:stack => stack}
   end
 
@@ -31,6 +31,4 @@ defmodule StackTest do
     assert Stack.pop(stack) == 15
     assert Stack.state(stack) == [10, 9]
   end
-
-
 end
