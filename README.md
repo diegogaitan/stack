@@ -1,21 +1,41 @@
 # Stack
 
-**TODO: Add description**
+**Implementation of the Stack data structure using GenServer**
 
 ## Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `stack` to your list of dependencies in `mix.exs`:
+The file `.tool-versions` for [asdf](https://github.com/asdf-vm/asdf) contains the Elixir version to use: `1.11.1`.
+
+## Playing with the application
+
+Through the `Stack` module to call the API methods that encapsulate the
+OTP/GenServer calls:
 
 ```elixir
-def deps do
-  [
-    {:stack, "~> 0.1.0"}
-  ]
-end
+iex(1)> {:ok, stack} = Stack.start_link([])
+{:ok, #PID<0.180.0>}
+iex(2)> Stack.push(stack, 3)
+:ok
+iex(3)> Stack.push(stack, 6)
+:ok
+iex(4)> Stack.push(stack, 1)
+:ok
+iex(5)> Stack.pop(stack)
+1
+iex(6)> Stack.state(stack)
+[6, 3]
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/stack](https://hexdocs.pm/stack).
+## Running tests
 
+Run `mix test` :
+
+```
+➜  stack (master) ✗ mix test
+.........
+
+Finished in 0.04 seconds
+9 tests, 0 failures
+
+Randomized with seed 404803
+```
